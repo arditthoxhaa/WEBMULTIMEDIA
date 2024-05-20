@@ -1,40 +1,88 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // Function to automatically slide the slider
-    function autoSlide() {
-        const sliderContainer = document.querySelector('.slider-container');
-        const sliderItems = document.querySelectorAll('.slider-item');
-        let currentIndex = 0;
+// Wait for the DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Create a Pixi Application
+    const app = new PIXI.Application({
+        width: window.innerWidth, 
+        height: 300, 
+        backgroundColor: 0x1099bb,
+    });
+    document.getElementById('slider-container').appendChild(app.view);
 
-        const slideInterval = setInterval(() => {
-            // Move to the next slide
-            currentIndex++;
-            const newPosition = -currentIndex * sliderItems[0].offsetWidth;
-            sliderContainer.style.transition = 'transform 0.5s ease-in-out'; // Add transition effect
-            sliderContainer.style.transform = `translateX(${newPosition}px)`;
+    // Load images
+    const images = [
+        'images/aoharuride.jpg',
+        'images/away.jpg',
+        'images/demon.jpg',
+        'images/goku.jpg',
+        'images/hxh.jpg',
+        'images/hyouka.jpg',
+        'images/jjk.jpg',
+        'images/naruto.jpg',
+        'images/one.jpg',
+        'images/seven.jpg',
+        'images/theboy.jpg',
+        'images/titan.jpg',
+        'images/tower.jpg',
+        'images/yourname.jpg'
+    ];
 
-            // If reached the end, immediately jump back to the first photo
-            if (currentIndex >= sliderItems.length) {
-                setTimeout(() => {
-                    sliderContainer.style.transition = 'none'; // Remove transition
-                    currentIndex = 0;
-                    sliderContainer.style.transform = `translateX(${currentIndex * sliderItems[0].offsetWidth}px)`;
-                    setTimeout(() => {
-                        sliderContainer.style.transition = 'transform 0.5s ease-in-out'; // Add transition effect
-                    }, 50); // Delay before re-enabling transition
-                }, 500); // Wait for transition to complete before resetting position
+    // Create a container for the slider
+    const sliderContainer = new PIXI.Container();
+    app.stage.addChild(sliderContainer);
+
+    // Load images and create sprites
+    const textureLoader = PIXI.Loader.shared;
+    images.forEach((image) => {
+        textureLoader.add(image, image);
+    });
+
+    textureLoader.load((loader, resources) => {
+        images.forEach((image, index) => {
+            const texture = resources[image].texture;
+            const sprite = new PIXI.Sprite(texture);
+            sprite.x = index * 160; // 150px width + 10px margin
+            sprite.y = 0;
+            sprite.width = 150;
+            sprite.height = 225;
+            sliderContainer.addChild(sprite);
+        });
+
+        // Set the initial position of the slider
+        let ticker = new PIXI.Ticker();
+        ticker.add(() => {
+            sliderContainer.x -= 1; // Move left by 1 pixel each frame
+            if (sliderContainer.x <= -160 * images.length) {
+                sliderContainer.x = 0; // Reset position
             }
-        }, 3000); // Change slide every 3 seconds (adjust as needed)
-
-        // Function to stop sliding on mouse hover
-        sliderContainer.addEventListener('mouseenter', () => {
-            clearInterval(slideInterval);
         });
+        ticker.start();
+    });
+});
 
-        // Function to resume sliding on mouse leave
-        sliderContainer.addEventListener('mouseleave', () => {
-            autoSlide();
+// Mouse move effect on background video
+document.addEventListener('mousemove', function(e) {
+    const video = document.getElementById('background-video');
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+
+    // Calculate the amount of movement needed based on mouse position
+    const moveX = (clientX / innerWidth - 0.5) * 30; // Adjust multiplier for effect intensity
+    const moveY = (clientY / innerHeight - 0.5) * 30; // Adjust multiplier for effect intensity
+
+    // Apply the transform to the video
+    video.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
+});
+
+// Show text on featured item click
+document.addEventListener('DOMContentLoaded', function() {
+    const featuredItems = document.querySelectorAll('.featured-item');
+
+    featuredItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const textElement = item.querySelector('.featured-text');
+            if (textElement) {
+                textElement.style.display = textElement.style.display === 'block' ? 'none' : 'block';
+            }
         });
-    }
-
-    autoSlide(); // Start the auto sliding when the page loads
+    });
 });

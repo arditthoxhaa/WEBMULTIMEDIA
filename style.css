@@ -7,16 +7,19 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 header {
-    background-color: #333;
+    background-color: rgba(51, 51, 51, 0.8); /* Slightly transparent */
     color: #fff;
     padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     animation: fadeIn 1s ease; /* Add animation */
+    position: relative;
+    z-index: 2; /* Ensure header is above the video */
 }
 
 @keyframes fadeIn {
@@ -49,6 +52,8 @@ nav ul li a {
 main {
     padding: 20px;
     animation: slideInLeft 1s ease; /* Add animation */
+    position: relative;
+    z-index: 2; /* Ensure main content is above the video */
 }
 
 @keyframes slideInLeft {
@@ -62,55 +67,75 @@ main {
 
 .slider {
     margin-bottom: 50px;
-    animation: fadeInUp 1s ease; /* Add animation */
+    position: relative;
+    z-index: 2; /* Ensure slider is above the video */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better contrast */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
 }
 
 .slider-container {
     display: flex;
     overflow-x: auto;
+    gap: 20px;
+    scroll-snap-type: x mandatory; /* Ensures smooth snapping of elements */
 }
 
 .slider-item {
     flex: 0 0 auto;
     margin-right: 20px;
-    /* Additional styles for each slider item */
-    animation: slideInRight 1s ease; /* Add animation */
-}
-
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes slideInRight {
-    from {
-        opacity: 0;
-        transform: translateX(50px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+    animation: none; /* Remove animation */
+    scroll-snap-align: start; /* Snap to the start of each item */
 }
 
 .featured-anime {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 50px;
 }
 
 .featured-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 20px;
+    display: flex;
+    justify-content: space-around; /* Spread items horizontally with equal space around them */
+    align-items: center; /* Center items vertically */
 }
 
 .featured-item {
-    /* Additional styles for each featured anime item */
+    position: relative;
+    flex: 0 0 auto;
+    width: 30%; /* Set width of each item */
+    margin: 0 5%; /* Add space between items */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    cursor: pointer;
+}
+
+.featured-item img {
+    width: 100%; /* Make images take the full width of their container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: add rounded corners for better appearance */
+}
+
+.featured-item:hover {
+    transform: scale(1.1); /* Zoom in on hover */
+}
+
+.featured-text {
+    display: none; /* Initially hide the text */
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 3; /* Ensure text is above other elements */
+}
+
+.featured-item.show-text .featured-text {
+    display: block; /* Show the text when the parent has the class "show-text" */
 }
 
 .latest-anime {
@@ -127,12 +152,92 @@ footer {
     padding: 20px;
     text-align: center;
     animation: fadeIn 1s ease; /* Add animation */
+    position: relative;
+    z-index: 2; /* Ensure footer is above the video */
 }
 
-/* Stili për të zvogëluar posterat */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure video is behind the content */
+    overflow: hidden;
+    pointer-events: none; /* Disable interaction with the video */
+}
+
+#background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    opacity: 0.8; /* Adjust opacity to make content more readable */
+    filter: blur(3px); /* Slight blur to avoid distraction */
+    transition: opacity 0.5s ease; /* Smooth transition for opacity change */
+}
+
+.video-background:hover #background-video {
+    opacity: 0.6; /* Lower opacity on hover */
+}
+
 .slider-item img,
 .featured-item img,
 .latest-item img {
-    max-width: 150px; /* Vendos dimensionin maksimal për posterat */
-    height: auto; /* Ruaj aspektin e imazhit */
+    max-width: 150px; /* Set the maximum width for images */
+    height: auto; /* Maintain the aspect ratio of images */
+}
+
+.slider-item img:hover {
+    transform: scale(1.1); /* Zoom in by 10% on hover */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.slider-container {
+    border-radius: 10px; /* Rounded corners */
+    overflow: hidden; /* Hide overflowing posters */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+.slider-item {
+    margin-right: 20px; /* Space between posters */
+}
+
+.slider-item:last-child {
+    margin-right: 0; /* Remove margin from the last poster */
+}
+
+.slider-item img {
+    display: block; /* Ensure images behave as block elements */
+    width: 150px; /* Set width of posters */
+    height: 225px; /* Set height of posters */
+    object-fit: cover; /* Maintain aspect ratio and cover entire container */
+    border-radius: 10px; /* Rounded corners for posters */
+    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Keyframes for sliding animation */
+@keyframes slideAnimation {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-150px * 14)); /* Adjust based on the number of photos and the width of each photo */
+    }
+}
+
+/* Apply the sliding animation to the slider items */
+.slider-item {
+    flex: 0 0 auto;
+    margin-right: 20px;
+    animation: slideAnimation 60s linear infinite; /* Maintain constant speed */
+}
+
+/* Override animation iteration count after one loop */
+.slider-container {
+    animation-iteration-count: 1;
 }
