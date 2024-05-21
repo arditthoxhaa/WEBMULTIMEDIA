@@ -1,4 +1,5 @@
 /* Reset CSS */
+/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
@@ -37,11 +38,8 @@ header {
 
 nav ul {
     list-style: none;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
+    display: flex;
+    gap: 20px;
 }
 
 nav ul li a {
@@ -84,8 +82,6 @@ main {
 
 .slider-item {
     flex: 0 0 auto;
-    margin-right: 20px;
-    animation: none; /* Remove animation */
     scroll-snap-align: start; /* Snap to the start of each item */
 }
 
@@ -99,16 +95,16 @@ main {
 
 .featured-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around; /* Spread items horizontally with equal space around them */
     align-items: center; /* Center items vertically */
 }
 
 .featured-item {
     position: relative;
-    flex: 0 0 auto;
-    width: 30%; /* Set width of each item */
-    margin: 0 5%; /* Add space between items */
-    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    flex: 0 0 calc(33.33% - 20px); /* Set width of each item with proper spacing */
+    margin: 10px; /* Add space between items */
+    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition for hover effect and blur */
     cursor: pointer;
 }
 
@@ -122,28 +118,114 @@ main {
     transform: scale(1.1); /* Zoom in on hover */
 }
 
+.featured-text.show-text {
+    display: block;
+}
+
 .featured-text {
     display: none; /* Initially hide the text */
     position: absolute;
-    top: 10%;
-    left: 10%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the text */
     color: #fff;
     background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
     padding: 10px;
     border-radius: 5px;
     z-index: 3; /* Ensure text is above other elements */
+    text-align: center; /* Center text within the container */
 }
 
 .featured-item.show-text .featured-text {
     display: block; /* Show the text when the parent has the class "show-text" */
 }
 
+.featured-item.show-text img {
+    filter: blur(5px); /* Blur the image when text is shown */
+}
+
 .latest-anime {
-    /* Styles for latest anime section */
+    padding: 20px;
 }
 
 .latest-container {
-    /* Styles for latest anime items */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between; /* Space items evenly across the container */
+}
+
+.latest-item {
+    flex: 0 0 calc(30% - 7px); /* Each item takes up half the container width minus the gap */
+    display: flex; /* Flex container */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    backdrop-filter: blur(10px); /* Blur effect */
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 20px; /* Add padding */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.latest-item:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+.latest-item img {
+    width: 100%; /* Make the image take the full width */
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px; /* Space between the poster and text */
+}
+
+.latest-item .anime-tag, 
+.latest-item .episode-tag, 
+.latest-item .sub-tag, 
+.latest-item h3, 
+.latest-item p {
+    color: #fff;
+}
+
+.latest-item .anime-tag, 
+.latest-item .episode-tag, 
+.latest-item .sub-tag {
+    position: absolute;
+    top: 10px;
+    padding: 5px 10px;
+    background-color: rgba(255, 165, 0, 0.9);
+    color: #fff;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.latest-item .anime-tag {
+    left: 10px;
+}
+
+.latest-item .episode-tag {
+    right: 50px;
+}
+
+.latest-item .sub-tag {
+    right: 10px;
+}
+
+.latest-item h3, .latest-item p {
+    margin: 0;
+    padding: 0 10px;
+    text-align: center; /* Center text within the container */
+}
+
+.anime-preview {
+    width: 300px; /* Adjust width as needed */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 footer {
@@ -165,6 +247,7 @@ footer {
     z-index: -1; /* Ensure video is behind the content */
     overflow: hidden;
     pointer-events: none; /* Disable interaction with the video */
+    background: rgba(0,0,0,500);
 }
 
 #background-video {
@@ -177,7 +260,7 @@ footer {
     min-height: 100%;
     transform: translate(-50%, -50%);
     opacity: 0.8; /* Adjust opacity to make content more readable */
-    filter: blur(3px); /* Slight blur to avoid distraction */
+    filter: blur(12px); /* Slight blur to avoid distraction */
     transition: opacity 0.5s ease; /* Smooth transition for opacity change */
 }
 
@@ -240,4 +323,72 @@ footer {
 /* Override animation iteration count after one loop */
 .slider-container {
     animation-iteration-count: 1;
+}
+   
+  /* Media Queries for Responsiveness */
+
+/* For tablets and below */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .featured-item {
+        flex: 0 0 calc(50% - 10px); /* Two items per row */
+    }
+
+    .latest-container {
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center; /* Center items horizontally */
+    }
+
+    .latest-item {
+        flex: 0 0 calc(50% - 10px); /* Two items per row */
+    }
+
+    .slider-item img {
+        width: 100px; /* Adjust poster width for smaller screens */
+        height: 150px; /* Adjust poster height for smaller screens */
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .logo h1 {
+        font-size: 18px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .featured-item {
+        flex: 0 0 100%; /* One item per row */
+        margin: 10px 0; /* Add vertical margin */
+    }
+
+    .latest-item {
+        flex: 0 0 calc(100% - 20px); /* Stack items vertically */
+    }
+
+    .latest-item img {
+        width: 100%; /* Make the image take the full width */
+        max-width: none; /* Remove maximum width */
+    }
+
+    .latest-item .anime-tag,
+    .latest-item .episode-tag,
+    .latest-item .sub-tag,
+    .latest-item h3,
+    .latest-item p {
+        font-size: 14px; /* Reduce font size for better readability */
+    }
 }

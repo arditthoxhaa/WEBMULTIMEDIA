@@ -86,3 +86,35 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const featuredItems = document.querySelectorAll('.featured-item');
+
+    featuredItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const isShowing = item.classList.contains('show-text');
+
+            // Remove blur and hide text from all items
+            featuredItems.forEach(i => {
+                i.classList.remove('show-text');
+            });
+
+            // If the clicked item was not already showing text, show it and blur the image
+            if (!isShowing) {
+                item.classList.add('show-text');
+            }
+        });
+    });
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const videoElements = document.querySelectorAll('.anime-preview');
+
+    videoElements.forEach(video => {
+        video.addEventListener('click', () => {
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+    });
+});
