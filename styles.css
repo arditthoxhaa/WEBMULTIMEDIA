@@ -1,0 +1,215 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #1c1c1c;
+}
+
+header .logo h1 {
+    margin: 0;
+    color: #f39c12;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure video is behind the content */
+    overflow: hidden;
+    pointer-events: none; /* Disable interaction with the video */
+    background: rgba(0,0,0,0.9);
+}
+
+#background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    opacity: 0.3; /* Adjust opacity to make content more readable */
+    filter: blur(12px); /* Slight blur to avoid distraction */
+    transition: opacity 0.5s ease; /* Smooth transition for opacity change */
+}
+
+
+.main-container {
+    display: flex;
+    justify-content: center; /* Centering main content horizontally */
+    padding: 40px;
+}
+
+.categories {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin-right: 20px;
+    height: fit-content;
+}
+
+.categories h2 {
+    margin: 0;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.category-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.category-button {
+    background: #f39c12;
+    color: #ffffff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.content {
+    flex: 3;
+    display: flex;
+    justify-content: center; /* Centering recently-updated within content */
+}
+
+.recently-updated-container {
+    display: flex;
+    justify-content: center; /* Centering recently-updated */
+    width: 100%; /* Ensure it takes full width of the content */
+}
+
+.recently-updated {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 1000px; /* Set a max-width to limit the size */
+    width: 100%;
+}
+
+.recently-updated h2 {
+    margin: 0;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.anime-card {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.anime-card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.anime-info {
+    padding: 10px 0;
+}
+
+.tags {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.tag {
+    background: #f39c12;
+    padding: 5px;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.anime-info h3 {
+    margin: 0;
+    color: #ffffff;
+}
+
+footer {
+    background-color: rgba(27, 27, 27, 0.8); /* Semi-transparent background */
+    padding: 20px 0;
+    text-align: center;
+    backdrop-filter: blur(10px); /* Optional: Adds a blur effect behind the footer */
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-social {
+    margin-bottom: 20px;
+}
+
+.footer-social a {
+    margin: 0 10px;
+    color: #f5f5f5;
+    text-decoration: none;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: #ff6347; /* Add a hover effect color, e.g., tomato */
+}
+
+.footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-links a {
+    margin: 0 15px;
+    color: #f5f5f5;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ff6347; /* Add a hover effect color, e.g., tomato */
+}
+
+.footer-credits p {
+    margin: 0;
+    font-size: 14px;
+}

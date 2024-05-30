@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://pixijs.download/release/pixi.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>AnimeWorld</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">Anime</a></li>
+                <li><a href="#">Top Anime</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="video-background">
+        <video autoplay muted loop id="background-video">
+            <source src="diti4.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="main-container">
+        <div class="categories">
+            <h2>Categories</h2>
+            <div class="category-buttons">
+                <button class="category-button">All</button>
+                <button class="category-button">Action</button>
+                <button class="category-button">Adventure</button>
+                <button class="category-button">Comedy</button>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="recently-updated-container">
+                <div class="recently-updated">
+                    <h2>Recently Updated</h2>
+                    <div class="anime-grid">
+                        <!-- Anime cards go here -->
+                        <div class="anime-card">
+                            <img src="images/away.jpg" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 8</div>
+                                </div>
+                                <h3>Spirited Away</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="/images/aoharuride.jpg" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 8</div>
+                                </div>
+                                <h3>Ao Haru Ride</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="/images/demon.jpg" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 8</div>
+                                </div>
+                                <h3>Demon Slayer</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="/images/dbz.jpg" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 8</div>
+                                </div>
+                                <h3>Dragon Ball : Z</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="/images/hxh.jpg" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 8</div>
+                                </div>
+                                <h3>Hunter x Hunter</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="/images/hyouka.jpg" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 8</div>
+                                </div>
+                                <h3>Hyouka</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="/images/jjk.jpg" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 8</div>
+                                </div>
+                                <h3>Jujutsu Kaisen</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="/images/naruto.jpg" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 8</div>
+                                </div>
+                                <h3>Naruto</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="images/one.jpg" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 8</div>
+                                </div>
+                                <h3>One Piece</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="/images/seven.jpg" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 8</div>
+                                </div>
+                                <h3>Seven Dead</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="/images/theboy.jpg" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 8</div>
+                                </div>
+                                <h3>The Boy And The Heron</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="/images/tower.jpg" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 8</div>
+                                </div>
+                                <h3>Tower of God</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="/images/bleach.png" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 19</div>
+                                </div>
+                                <h3>Bleach</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="/images/deathnote.png" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 27</div>
+                                </div>
+                                <h3>Death Note</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="/images/Haikyu.png" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 8</div>
+                                </div>
+                                <h3>Haikyu</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="/images/spyxfamily.png" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 8</div>
+                                </div>
+                                <h3>Spy x Family</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="/images/rezero.jpg" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 78</div>
+                                </div>
+                                <h3>RE:Zero</h3>
+                            </div>
+                        </div>
+                        <div class="anime-card">
+                            <img src="/images/perfectblue.jpg" alt="Anime Image">
+                            <div class="anime-info">
+                                <div class="tags">
+                                    <div class="tag">HD</div>
+                                    <div class="tag">SUB</div>
+                                    <div class="tag">Ep 69</div>
+                                </div>
+                                <h3>Perfect Blue</h3>
+                            </div>
+                        </div>
+                        <!-- Repeat for other anime cards -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="/about">About Us</a>
+                <a href="/contact">Contact</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/privacy">Privacy Policy</a>
+            </div>
+            <div class="footer-credits">
+                <p>&copy; 2024 AnimeMix. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="s.js"></script>
+</body>
+</html>
