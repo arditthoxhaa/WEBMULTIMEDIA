@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AnimeFlix</title>
+    <title>AnimeWorld</title>
     <!-- Include Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- Include CSS file -->
@@ -11,6 +11,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/6.5.6/pixi.min.js"></script> <!-- Include PixiJS -->
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <img src="/images/loading.gif" alt="Loading..." class="anime-character">
+    </div>
+    
     <div class="video-background">
         <video autoplay muted loop id="background-video">
             <source src="diti4.mp4" type="video/mp4">
@@ -19,21 +24,20 @@
     </div>
     <header>
         <div class="logo">
-            <h1>AnimeFlix</h1>
+            <h1>AnimeWorld</h1>
         </div>
         <nav>
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="anime.html">Anime</a></li>
-                <li><a href="#">Recipes</a></li>
-                <li><a href="#">Blog</a></li>
+                <li><a href="blog.html">Blog</a></li>
             </ul>
         </nav>
     </header>
     <main>
         <section class="slider">
             <!-- Slider content goes here -->
-            <div class="slider-container">
+            <div class="slider-container" id="slider-container">
                 <!-- Add your slider items here -->
                 <div class="slider-item"><img src="images/aoharuride.jpg" alt="Poster 1"></div>
                 <div class="slider-item"><img src="images/away.jpg" alt="Poster 2"></div>
@@ -144,10 +148,10 @@
                 <div class="latest-item">
                     <img src="images/naruto.jpg" alt="Latest Anime 6">
                     <div class="anime-tag">Anime</div>
-                    <div class="episode-tag">EP 20</div>
+                    <div class="episode-tag">EP 5</div>
                     <div class="sub-tag">Sub</div>
                     <h3>Naruto</h3>
-                    <p>1 day ago</p>
+                    <p>16 hours ago</p>
                     <video class="anime-preview" src="/trailers/2.mp4"  muted loop></video>
                 </div>
             </div>

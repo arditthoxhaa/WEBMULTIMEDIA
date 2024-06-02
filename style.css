@@ -478,3 +478,39 @@ footer {
     flex-wrap: wrap;
     justify-content: center;
 }
+/*
+preloaderi
+*/
+/* Preloader styles */
+#preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.anime-character {
+    width: 150px;
+    height: auto;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Main content hidden by default */
+.hidden {
+    display: none;
+}

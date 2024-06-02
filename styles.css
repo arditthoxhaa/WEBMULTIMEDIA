@@ -1,9 +1,13 @@
+/* General styles */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #121212;
     color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -16,7 +20,6 @@ header {
 
 header .logo h1 {
     margin: 0;
-    color: #f39c12;
 }
 
 header nav ul {
@@ -31,7 +34,6 @@ header nav ul li a {
     color: #ffffff;
     text-decoration: none;
 }
-
 .video-background {
     position: fixed;
     top: 0;
@@ -58,8 +60,8 @@ header nav ul li a {
     transition: opacity 0.5s ease; /* Smooth transition for opacity change */
 }
 
-
 .main-container {
+    flex: 1; /* This makes the main container take up all available space */
     display: flex;
     justify-content: center; /* Centering main content horizontally */
     padding: 40px;
@@ -168,6 +170,7 @@ footer {
     padding: 20px 0;
     text-align: center;
     backdrop-filter: blur(10px); /* Optional: Adds a blur effect behind the footer */
+    margin-top: auto;  /* This pushes the footer to the bottom */
 }
 
 .footer-container {
@@ -212,4 +215,38 @@ footer {
 .footer-credits p {
     margin: 0;
     font-size: 14px;
+}
+
+/* Preloader styles */
+#preloader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.anime-character {
+    width: 150px;
+    height: auto;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Main content hidden by default */
+.hidden {
+    display: none;
 }

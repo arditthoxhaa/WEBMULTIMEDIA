@@ -54,3 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Display all animes by default
     displayAnimes(animeData);
 });
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+        document.getElementById('preloader').style.display = 'none';
+        document.getElementById('main-content').classList.remove('hidden');
+    }, 1500); // 1500 milliseconds = 1.5 seconds
+});

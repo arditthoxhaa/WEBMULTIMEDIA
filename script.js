@@ -55,45 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         ticker.start();
     });
-
-    // Background video mouse move effect
-    document.addEventListener('mousemove', e => {
-        const video = document.getElementById('background-video');
-        const { clientX, clientY } = e;
-        const { innerWidth, innerHeight } = window;
-
-        const moveX = (clientX / innerWidth - 0.5) * 30; // Adjust multiplier for effect intensity
-        const moveY = (clientY / innerHeight - 0.5) * 30; // Adjust multiplier for effect intensity
-
-        video.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
-    });
-
-    // Show text on featured item click
-    const featuredItems = document.querySelectorAll('.featured-item');
-    featuredItems.forEach(item => {
-        item.addEventListener('click', () => {
-            featuredItems.forEach(i => i.classList.remove('show-text'));
-            item.classList.toggle('show-text');
-        });
-    });
-});
-document.addEventListener('DOMContentLoaded', () => {
-    const categoryButtons = document.querySelectorAll('.category-button');
-    const animeCards = document.querySelectorAll('.anime-card');
-
-    categoryButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const category = button.getAttribute('data-category');
-
-            animeCards.forEach(card => {
-                if (category === 'all' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
 });
 
 document.querySelectorAll('.anime-preview').forEach(video => {
@@ -105,3 +66,11 @@ document.querySelectorAll('.anime-preview').forEach(video => {
             }
         });
     });
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            document.getElementById('preloader').style.display = 'none';
+            document.getElementById('main-content').classList.remove('hidden');
+        }, 1500); // 1500 milliseconds = 1.5 seconds
+    });
+    
+    
