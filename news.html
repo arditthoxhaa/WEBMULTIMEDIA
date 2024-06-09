@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News - AnimeWorld</title>
+    <title>Anime News</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://pixijs.download/release/pixi.min.js"></script>
 </head>
 <body>
@@ -19,6 +19,11 @@
         </div>
         <nav>
             <ul>
+                <li id="character-dropdown" class="dropdown">
+                    <a href="character.html">
+                        <img src="" alt="Selected Character" id="selected-character" class="character-icon">
+                    </a>
+                </li>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="anime.html">Anime</a></li>
                 <li><a href="news.html">News</a></li>
@@ -30,18 +35,36 @@
             <source src="diti4.mp4" type="video/mp4">
         </video>
     </div>
-    
-    <!-- PixiJS Canvas -->
-  <div class="pixi-section">
-        <div id="pixi-container"></div>
-    </div>
-    
-    
     <div class="main-container">
-        <div class="news-section">
+        <div class="news-container">
             <h2>Latest News</h2>
             <div class="news-grid">
-                <!-- Existing news cards -->
+                <!-- News cards go here -->
+                <div class="news-card">
+                    <img src="/images/news1.jpg" alt="News Image">
+                    <div class="news-info">
+                        <h3>Exciting Announcement!</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <img src="/images/news2.jpg" alt="News Image">
+                    <div class="news-info">
+                        <h3>New Season Premiere</h3>
+                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <img src="/images/news3.jpg" alt="News Image">
+                    <div class="news-info">
+                        <h3>Exclusive Interview</h3>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                        <a href="#">Read More</a>
+                    </div>
+                </div>
+                <!-- Repeat for other news cards -->
             </div>
         </div>
     </div>

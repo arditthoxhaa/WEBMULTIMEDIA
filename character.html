@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Profiles - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Linking to the external CSS file -->
+</head>
+<body>
+    <!-- Background Video -->
+    <div class="video-background" id="pixi-container">
+        <video autoplay muted loop id="background-video">
+            <source src="diti4.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Login Form -->
+    <div class="login-container">
+        <h2>Choose Your Character</h2>
+        <div class="character-icons">
+            <img src="images/narutopixel.jpg" alt="Character 1" class="character-icon" data-character="Character 1">
+            <img src="images/gokupixel.jpg" alt="Character 2" class="character-icon" data-character="Character 2">
+            <img src="images/kakashipixel.webp" alt="Character 3" class="character-icon" data-character="Character 3">
+            <!-- Add more character icons as needed -->
+        </div>
+        <form action="index.html" method="POST" id="character-form">
+            <div class="input-group">
+                <select id="character" name="character" style="display:none;">
+                    <option value="Character 1">Character 1</option>
+                    <option value="Character 2">Character 2</option>
+                    <option value="Character 3">Character 3</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="name">Your Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <script src="script.js"></script> <!-- Linking to the external JavaScript file -->
+</body>
+</html>

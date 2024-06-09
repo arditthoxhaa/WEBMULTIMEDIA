@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize Pixi.js Application
     const app = new PIXI.Application({
@@ -25,13 +24,17 @@ document.addEventListener('DOMContentLoaded', () => {
         { src: 'images/yourname.jpg', url: 'https://example.com/yourname' }
     ];
 
-    
     const sliderContainer = new PIXI.Container();
     app.stage.addChild(sliderContainer);
 
     const textureLoader = PIXI.Loader.shared;
-    images.forEach(image => textureLoader.add(image.src, image.src));
 
+    // Load images
+    images.forEach(image => {
+        textureLoader.add(image.src, image.src);
+    });
+
+    // Start animation when all images are loaded
     textureLoader.load((loader, resources) => {
         images.forEach((image, index) => {
             const sprite = new PIXI.Sprite(resources[image.src].texture);
@@ -48,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             sliderContainer.addChild(sprite);
         });
 
-        const ticker = new PIXI.Ticker();
+        const ticker = PIXI.Ticker.shared;
         ticker.add(() => {
             sliderContainer.x -= 1; // Move left by 1 pixel each frame
             if (sliderContainer.x <= -160 * images.length) {
@@ -137,77 +140,104 @@ document.querySelectorAll('.anime-preview').forEach(video => {
             document.getElementById('main-content').classList.remove('hidden');
         }, 1500); // 1500 milliseconds = 1.5 seconds
     });
-       
+    document.addEventListener("DOMContentLoaded", function() {
+        const characterIcons = document.querySelectorAll('.character-icon');
+        const characterSelect = document.getElementById('character');
+        const nameInput = document.getElementById('name');
+        const form = document.getElementById('character-form');
+        
+        // Load the sound effect
+        const clickSound = new Audio('sound.mp3'); // Adjust the path to your sound file
     
-// script.js
-
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Pixi.js Application
-    const app = new PIXI.Application({
-        width: window.innerWidth,
-        height: 500, // Adjust height for the slider
-        backgroundAlpha: 0,
-    });
-    document.getElementById('slider-container').appendChild(app.view);
-
-    const newsData = [
-        { image: 'images/news1.jpg', title: 'New Anime Release: Title Here', description: 'Lorem ipsum dolor sit amet...', link: 'news-details.html' },
-        { image: 'images/news2.jpg', title: 'Exclusive Interview with Creator', description: 'Lorem ipsum dolor sit amet...', link: 'news-details.html' },
-        { image: 'images/news3.jpg', title: 'Upcoming Anime Events', description: 'Lorem ipsum dolor sit amet...', link: 'news-details.html' }
-    ];
-
-    const slider = new PIXI.Container();
-    app.stage.addChild(slider);
-
-    const loader = new PIXI.Loader();
-    newsData.forEach(news => loader.add(news.image, news.image));
-    loader.load((loader, resources) => {
-        newsData.forEach((news, index) => {
-            const sprite = new PIXI.Sprite(resources[news.image].texture);
-            sprite.x = index * app.screen.width;
-            sprite.width = app.screen.width; // Full width
-            sprite.height = app.screen.height; // Full height
-            slider.addChild(sprite);
-
-            // Title
-            const title = new PIXI.Text(news.title, { fontSize: 24, fill: 'white', fontWeight: 'bold' });
-            title.position.set(sprite.x + 20, 20);
-            slider.addChild(title);
-
-            // Description
-            const description = new PIXI.Text(news.description, { fontSize: 16, fill: 'white' });
-            description.position.set(sprite.x + 20, 60);
-            slider.addChild(description);
-
-            // Interactive Link
-            sprite.interactive = true;
-            sprite.buttonMode = true;
-            sprite.on('pointertap', () => {
-                window.location.href = news.link;
+        characterIcons.forEach(icon => {
+            icon.addEventListener('click', () => {
+                const selectedCharacter = icon.getAttribute('data-character');
+                const selectedImage = icon.getAttribute('data-image'); // Get the image URL
+                characterSelect.value = selectedCharacter;
+                form.classList.add('active'); // Show the form
+    
+                // Hide other character icons
+                characterIcons.forEach(otherIcon => {
+                    if (otherIcon !== icon) {
+                        otherIcon.style.display = 'none';
+                    }
+                });
+    
+                // Play the click sound
+                clickSound.play();
+    
+                // Store the selected character's image URL in local storage
+                localStorage.setItem('selectedImage', selectedImage);
             });
         });
-    });
-
-    let currentIndex = 0;
-    app.ticker.add(() => {
-        slider.x -= 2;
-        if (slider.x <= -app.screen.width * (currentIndex + 1)) {
-            currentIndex++;
-            if (currentIndex >= newsData.length) {
-                slider.x = 0;
-                currentIndex = 0;
+    
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+    
+            const characterValue = characterSelect.value;
+            const nameValue = nameInput.value.trim();
+            if (characterValue && nameValue) {
+                // Store the selected character's image URL in local storage
+                localStorage.setItem('selectedCharacter', characterValue);
+    
+                // Proceed with redirection to index.html
+                window.location.href = 'index.html';
+    
+                // Play the click sound
+                clickSound.play();
+            } else {
+                alert('Please choose a character and enter your name.'); // If character or name is missing, show an alert
             }
+        });
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+        // Retrieve the selected character's image from local storage
+        const selectedCharacter = localStorage.getItem('selectedCharacter');
+        let selectedImage = '';
+    
+        // Set the image path based on the selected character
+        switch(selectedCharacter) {
+            case 'Character 1':
+                selectedImage = 'images/narutopixel.jpg';
+                break;
+            case 'Character 2':
+                selectedImage = 'images/gokupixel.jpg';
+                break;
+            case 'Character 3':
+                selectedImage = 'images/kakashipixel.webp';
+                break;
+            default:
+                // Set a default image if no character is selected
+                selectedImage = 'images/default.jpg';
         }
+    
+        // Display the selected character's image in the navbar
+        const selectedCharacterElement = document.getElementById('selected-character');
+        selectedCharacterElement.src = selectedImage;
+        selectedCharacterElement.style.borderRadius = '40%'; // Make it round
+        selectedCharacterElement.style.width = '30px'; // Adjust size as needed
+        selectedCharacterElement.style.height = '30px'; // Adjust size as needed
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+    const characterIcon = document.getElementById('selected-character');
+    const logoutButton = document.getElementById('logout-button');
+
+    // Function to show the dropdown menu
+    function showDropdownMenu() {
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        dropdownMenu.classList.toggle('show');
+    }
+
+    // Event listener for clicking on the character icon
+    characterIcon.addEventListener('click', () => {
+        // Show the dropdown menu
+        showDropdownMenu();
     });
 
-    // Responsive resizing
-    window.addEventListener('resize', () => {
-        app.renderer.resize(window.innerWidth, 500);
-        slider.children.forEach((child, index) => {
-            child.x = index * window.innerWidth;
-            child.width = window.innerWidth;
-            child.height = 500;
-        });
+    // Event listener for the logout button
+    logoutButton.addEventListener('click', () => {
+        // Redirect to the character.html page
+        window.location.href = 'character.html';
     });
 });
 
