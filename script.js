@@ -134,6 +134,7 @@ document.querySelectorAll('.anime-preview').forEach(video => {
         // Display all animes by default
         displayAnimes(animeData);
     });
+    
     document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             document.getElementById('preloader').style.display = 'none';
@@ -190,6 +191,7 @@ document.querySelectorAll('.anime-preview').forEach(video => {
             }
         });
     });
+    
     document.addEventListener("DOMContentLoaded", function() {
         // Retrieve the selected character's image from local storage
         const selectedCharacter = localStorage.getItem('selectedCharacter');
@@ -218,26 +220,191 @@ document.querySelectorAll('.anime-preview').forEach(video => {
         selectedCharacterElement.style.width = '30px'; // Adjust size as needed
         selectedCharacterElement.style.height = '30px'; // Adjust size as needed
     });
-    document.addEventListener("DOMContentLoaded", function() {
-    const characterIcon = document.getElementById('selected-character');
-    const logoutButton = document.getElementById('logout-button');
 
-    // Function to show the dropdown menu
-    function showDropdownMenu() {
-        const dropdownMenu = document.getElementById('dropdown-menu');
-        dropdownMenu.classList.toggle('show');
-    }
+       // Background video mouse move effect
+       document.addEventListener('mousemove', e => {
+        const video = document.getElementById('background-video');
+        const { clientX, clientY } = e;
+        const { innerWidth, innerHeight } = window;
 
-    // Event listener for clicking on the character icon
-    characterIcon.addEventListener('click', () => {
-        // Show the dropdown menu
-        showDropdownMenu();
+        const moveX = (clientX / innerWidth - 0.5) * 20; // Adjust multiplier for effect intensity
+        const moveY = (clientY / innerHeight - 0.5) * 10; // Adjust multiplier for effect intensity
+
+        video.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
     });
 
-    // Event listener for the logout button
-    logoutButton.addEventListener('click', () => {
-        // Redirect to the character.html page
-        window.location.href = 'character.html';
+    document.addEventListener('mousemove', e => {
+        const pointer = document.getElementById('pointer');
+        const { clientX, clientY } = e;
+        pointer.style.left = clientX + 'px';
+        pointer.style.top = clientY + 'px';
+    });
+
+    // Initialize PixiJS
+// Initialize PixiJS
+let app = new PIXI.Application({
+    width: window.innerWidth,
+    height: window.innerHeight,
+    transparent: true, // Ensure transparency
+});
+document.getElementById('pixi-container').appendChild(app.view);
+
+// Create a container for particles
+let particleContainer = new PIXI.Container();
+app.stage.addChild(particleContainer);
+
+// Load a particle texture
+const particleTexture = PIXI.Texture.from('photo.png'); // Use actual path
+
+// Function to create a burst effect
+function createBurst(x, y) {
+    for (let i = 0; i < 50; i++) {
+        let particle = new PIXI.Sprite(particleTexture);
+        particle.x = x;
+        particle.y = y;
+        particle.alpha = 1;
+        particle.anchor.set(0.5);
+        
+        // Random direction and speed
+        let angle = Math.random() * Math.PI * 2;
+        let speed = Math.random() * 5 + 2;
+        particle.vx = Math.cos(angle) * speed;
+        particle.vy = Math.sin(angle) * speed;
+        
+        particleContainer.addChild(particle);
+
+        // Add a tween for particle fade and removal
+        app.ticker.add(function(delta) {
+            particle.x += particle.vx * delta;
+            particle.y += particle.vy * delta;
+            particle.alpha -= 0.02 * delta;
+            if (particle.alpha <= 0) {
+                particleContainer.removeChild(particle);
+                particle.destroy();
+            }
+        });
+    }
+}
+
+// Add event listener to character icons
+document.querySelectorAll('.character-icon').forEach(icon => {
+    icon.addEventListener('click', (e) => {
+        let rect = e.target.getBoundingClientRect();
+        createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2);
     });
 });
 
+// Resize the PixiJS application when the window is resized
+window.addEventListener('resize', () => {
+    app.renderer.resize(window.innerWidth, window.innerHeight);
+});
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Pixi.js Application
+    const app = new PIXI.Application({
+        width: window.innerWidth,
+        height: window.innerHeight,
+        backgroundColor: 0x1099bb,
+    });
+    document.getElementById('pixi-container').appendChild(app.view);
+
+    // Create a container for the squares
+    const squareContainer = new PIXI.Container();
+    app.stage.addChild(squareContainer);
+
+    // Number of squares
+    const numSquares = 10;
+
+    // Create squares
+    for (let i = 0; i < numSquares; i++) {
+        const square = new PIXI.Graphics();
+        square.beginFill(0xffffff);
+        square.drawRect(0, 0, 50, 50);
+        square.endFill();
+        square.x = Math.random() * app.renderer.width;
+        square.y = Math.random() * app.renderer.height;
+        squareContainer.addChild(square);
+    }
+
+    // Animation loop
+    app.ticker.add(() => {
+        // Rotate squares
+        squareContainer.children.forEach(square => {
+            square.rotation += 0.1 * square.scale.x;
+        });
+    });
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('anime-slider');
+    const images = [
+        'image1.jpg',
+        'image2.jpg',
+        'image3.jpg'
+    ];
+
+    let currentIndex = 0;
+
+    // Create slides
+    images.forEach((image, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'slide';
+        if (index === 0) slide.classList.add('active');
+
+        const img = document.createElement('img');
+        img.src = `/images/${image}`;
+        img.alt = `Slide ${index + 1}`;
+
+        slide.appendChild(img);
+        slider.appendChild(slide);
+    });
+
+    // Create navigation buttons
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'prev';
+    prevBtn.textContent = '❮';
+    slider.appendChild(prevBtn);
+
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'next';
+    nextBtn.textContent = '❯';
+    slider.appendChild(nextBtn);
+
+    // Create dots
+    const dotContainer = document.createElement('div');
+    dotContainer.className = 'dot-container';
+    slider.appendChild(dotContainer);
+
+    images.forEach((_, index) => {
+        const dot = document.createElement('span');
+        dot.className = 'dot';
+        if (index === 0) dot.classList.add('active');
+        dotContainer.appendChild(dot);
+
+        dot.addEventListener('click', () => {
+            showSlide(index);
+        });
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    // Show slide function
+    function showSlide(index) {
+        const slides = document.querySelectorAll('.slide');
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        currentIndex = index;
+    }
+
+    // Navigation button events
+    prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showSlide(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showSlide(currentIndex);
+    });
+});

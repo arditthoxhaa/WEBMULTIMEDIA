@@ -878,3 +878,97 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #555;
 }
+#pointer {
+    position: fixed;
+    width: 20px; /* Adjust size as needed */
+    height: 30px; /* Adjust size as needed */
+    background-image: url('/images/pointer.png'); 
+    background-size: contain; /* Adjust the size of the image */
+    background-repeat: no-repeat;
+    cursor: pointer;
+    z-index: 9999;
+    pointer-events: none; /* Ensure pointer doesn't interfere with mouse events */
+}
+/* CSS for custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #ff6347;
+    border-radius: 4px;
+}
+.content-wrapper {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    background: transparent;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+}
+
+.image-section {
+    flex: 1;
+    background-color: transparent;
+}
+
+.image-section .main-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.info-section {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: transparent;
+}
+
+.page-info h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.page-info p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.upcoming-animes {
+    width: 25%;
+    max-width: 250px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 20%;
+    right: 200px;
+    z-index: 5;
+    backdrop-filter: blur(5px);
+}
+
+.upcoming-animes h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.upcoming-animes ul {
+    list-style: none;
+    padding: 0;
+}
+
+.upcoming-animes li {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.upcoming-animes li strong {
+    color: #ffeb3b;
+}

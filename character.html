@@ -6,15 +6,18 @@
     <title>Character Profiles - Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css"> <!-- Linking to the external CSS file -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.2.3/pixi.min.js"></script> <!-- PixiJS CDN -->
 </head>
 <body>
-    <!-- Background Video -->
-    <div class="video-background" id="pixi-container">
+    <div class="video-background">
         <video autoplay muted loop id="background-video">
             <source src="diti4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
         </video>
     </div>
-
+    <!-- PixiJS Container -->
+    <div id="pixi-container"></div>
+    
     <!-- Login Form -->
     <div class="login-container">
         <h2>Choose Your Character</h2>
@@ -40,6 +43,7 @@
             <button type="submit">Login</button>
         </form>
     </div>
+
     <script src="script.js"></script> <!-- Linking to the external JavaScript file -->
 </body>
 </html>

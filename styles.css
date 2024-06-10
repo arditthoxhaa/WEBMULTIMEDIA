@@ -1,8 +1,10 @@
-/* Add your CSS styles here */
+/* General Styles */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
+    overflow: hidden; /* Prevent scrolling */
+    height: 100vh; /* Ensure the body covers the entire viewport */
 }
 
 /* Background Video */
@@ -12,7 +14,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Ensure video is behind the content */
+    z-index: 1; /* Ensure video is behind the content */
     overflow: hidden;
     pointer-events: none; /* Disable interaction with the video */
     background: rgba(0,0,0,0.9);
@@ -31,6 +33,17 @@ body {
     filter: blur(12px); /* Slight blur to avoid distraction */
     transition: opacity 0.5s ease; /* Smooth transition for opacity change */
 }
+/* PixiJS Container */
+#pixi-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allow clicks through PixiJS canvas */
+    z-index: 0; /* Ensure PixiJS is on top of video but below the login form */
+}
+
 /* Login Container Styles */
 .login-container {
     position: absolute;
@@ -41,6 +54,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     text-align: center;
+    z-index: 1; /* Ensure form is on top of PixiJS */
 }
 
 .login-container h2 {
@@ -58,6 +72,7 @@ body {
     cursor: pointer;
     border-radius: 50%;
     transition: transform 0.3s ease;
+    display: inline-block;
 }
 
 .character-icon:hover {

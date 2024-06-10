@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnimeWorld</title>
+    <!-- Include Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Include CSS file -->
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/6.2.1/pixi.min.js"></script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <img src="/images/loading.gif" alt="Loading..." class="anime-character">
+    </div>
+    
+    <div class="video-background">
+        <video autoplay muted loop id="background-video">
+            <source src="diti4.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <header>
+        <div class="logo">
+            <h1>AnimeWorld</h1>
+        </div>
+        <nav>
+            <ul>
+                <li id="character-dropdown" class="dropdown">
+                    <a href="character.html">
+                        <img src="" alt="Selected Character" id="selected-character" class="character-icon">
+                    </a>
+                </li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="anime.html">Anime</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+        <div id="pointer"></div>
+    </header>
+    <main>
+        <div class="content-wrapper">
+            <!-- Left Side Image -->
+            <div class="image-section">
+                <img src="/images/naruto.jpg" alt="Anime World" class="main-image">
+            </div>
+            <!-- Right Side Info -->
+            <div class="info-section">
+                <div class="page-info">
+                    <h2>Welcome to AnimeWorld</h2>
+                    <p>AnimeWorld is your ultimate destination for all things anime. Explore the latest anime series, read news, and dive into the world of your favorite characters.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Upcoming Animes Container -->
+        <div class="upcoming-animes">
+            <h3>Upcoming Animes</h3>
+            <ul>
+                <li><strong>Naruto: New Era</strong> - July 2024</li>
+                <li><strong>Attack on Titan: Rebirth</strong> - August 2024</li>
+                <li><strong>My Hero Academia: Next</strong> - September 2024</li>
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="anime.html">Anime</a>
+            <a href="news.html">News</a>
+        </div>
+        <div class="footer-credits">
+            <p>&copy; 2024 AnimeWorld. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- Include JavaScript file -->
+    <script src="script.js"></script>
+</body>
+</html>
