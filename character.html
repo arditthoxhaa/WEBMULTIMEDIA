@@ -6,6 +6,7 @@
     <title>Character Profiles - Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css"> <!-- Linking to the external CSS file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.2.3/pixi.min.js"></script> <!-- PixiJS CDN -->
 </head>
 <body>
@@ -15,16 +16,23 @@
             Your browser does not support the video tag.
         </video>
     </div>
-    <!-- PixiJS Container -->
     <div id="pixi-container"></div>
-    
-    <!-- Login Form -->
+
     <div class="login-container">
         <h2>Choose Your Character</h2>
         <div class="character-icons">
-            <img src="images/narutopixel.jpg" alt="Character 1" class="character-icon" data-character="Character 1">
-            <img src="images/gokupixel.jpg" alt="Character 2" class="character-icon" data-character="Character 2">
-            <img src="images/kakashipixel.webp" alt="Character 3" class="character-icon" data-character="Character 3">
+            <div class="character-icon-container">
+                <img src="images/narutopixel.jpg" alt="Character 1" class="character-icon" data-character="Character 1">
+                <div class="glow"></div> <!-- This div will be used for the glow effect -->
+            </div>
+            <div class="character-icon-container">
+                <img src="images/gokupixel.jpg" alt="Character 2" class="character-icon" data-character="Character 2">
+                <div class="glow"></div> <!-- This div will be used for the glow effect -->
+            </div>
+            <div class="character-icon-container">
+                <img src="images/kakashipixel.webp" alt="Character 3" class="character-icon" data-character="Character 3">
+                <div class="glow"></div> <!-- This div will be used for the glow effect -->
+            </div>
             <!-- Add more character icons as needed -->
         </div>
         <form action="index.html" method="POST" id="character-form">
@@ -42,7 +50,13 @@
             </div>
             <button type="submit">Login</button>
         </form>
+        <i id="toggle-sound" class="fas fa-volume-mute"></i> <!-- Icon for toggling sound -->
     </div>
+
+    <audio id="background-audio" loop>
+        <source src="/audios/backgroundsound.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
 
     <script src="script.js"></script> <!-- Linking to the external JavaScript file -->
 </body>

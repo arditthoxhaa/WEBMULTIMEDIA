@@ -22,7 +22,6 @@ body {
     overflow: hidden;
     pointer-events: none; /* Disable interaction with the video */
 }
-
 #background-video {
     position: absolute;
     top: 50%;
@@ -36,8 +35,6 @@ body {
     filter: blur(10px); /* Slight blur to avoid distraction */
     transition: opacity 0.5s ease; /* Smooth transition for opacity change */
 }
-
-
 /* PixiJS Container */
 #pixi-container {
     position: fixed;
@@ -45,10 +42,9 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Allow clicks through PixiJS canvas */
+    /* pointer-events: none; */ /* Remove this line */
     z-index: 0; /* Ensure PixiJS is on top of video but below the login form */
 }
-
 /* Login Container Styles */
 .login-container {
     position: relative;
@@ -71,6 +67,11 @@ body {
     margin-bottom: 30px;
 }
 
+.character-icon-container {
+    position: relative; /* Ensure the glow div is positioned relative to the character icon */
+    display: inline-block;
+}
+
 .character-icon {
     width: 80px;
     height: 80px;
@@ -78,15 +79,31 @@ body {
     cursor: pointer;
     border-radius: 50%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: inline-block;
+    display: block;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
 }
 
 .character-icon:hover {
     transform: scale(1.15);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.9);
 }
 
+.glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 70%;
+    background-color: rgba(255, 255, 255, 0.5); /* Adjust the color and opacity of the glow */
+    mix-blend-mode: overlay; /* Blend mode for the glow effect */
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.character-icon-container:hover .glow {
+    transform: translate(-50%, -50%) scale(0.7);
+}
 .input-group {
     margin-bottom: 20px;
 }
@@ -126,6 +143,24 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+/* Toggle Sound Button */
+#toggle-sound {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+    background-color: transparent;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 20px;
+}
+
+#toggle-sound:hover {
     background-color: #555;
     transform: scale(1.05);
 }

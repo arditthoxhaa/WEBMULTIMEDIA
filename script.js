@@ -91,10 +91,10 @@ document.querySelectorAll('.anime-preview').forEach(video => {
             { title: 'Seven Dead', category: 'Action', image: 'images/seven.jpg' },
             { title: 'The Boy And The Heron', category: 'Adventure', image: 'images/theboy.jpg' },
             { title: 'Tower of God', category: 'Action', image: 'images/tower.jpg' },
-            { title: 'Bleach', category: 'Action', image: 'images/bleach.png' },
-            { title: 'Deathnote', category: 'Action', image: 'images/deathnote.png' },
-            { title: 'Haikyu', category: 'Adventure', image: 'images/Haikyu.png' },
-            { title: 'SpyxFamily', category: 'Comedy', image: 'images/spyxfamily.png' },
+            { title: 'Bleach', category: 'Action', image: 'images/bleach.jpg' },
+            { title: 'Deathnote', category: 'Action', image: 'images/deathnote.jpg' },
+            { title: 'Haikyu', category: 'Adventure', image: 'images/Haikyu.jpg' },
+            { title: 'SpyxFamily', category: 'Comedy', image: 'images/spyxfamily.jpg' },
             { title: 'ReZero', category: 'Comedy', image: 'images/rezero.jpg' },
             { title: 'PerfectBlue', category: 'Comedy', image: 'images/perfectblue.jpg' },
         ];
@@ -141,7 +141,7 @@ document.querySelectorAll('.anime-preview').forEach(video => {
     const form = document.getElementById('character-form');
 
     // Load the sound effect
-    const clickSound = new Audio('trailers/sound.mp3'); // Adjust the path to your sound file
+    const clickSound = new Audio('audios/sound.mp3'); // Adjust the path to your sound file
     characterIcons.forEach(icon => {
         icon.addEventListener('click', () => {
             const selectedCharacter = icon.getAttribute('data-character');
@@ -171,72 +171,55 @@ document.querySelectorAll('.anime-preview').forEach(video => {
             localStorage.setItem('selectedCharacter', characterValue);
 
             // Proceed with redirection to index.html
-            window.location.href = 'index.html';
+            window.location.href = 'about.html';
         } else {
             alert('Please choose a character and enter your name.'); // If character or name is missing, show an alert
         }
     });
 });
-    document.addEventListener("DOMContentLoaded", function() {
-        // Retrieve the selected character's image from local storage
-        const selectedCharacter = localStorage.getItem('selectedCharacter');
-        let selectedImage = '';
-    
-        // Set the image path based on the selected character
-        switch(selectedCharacter) {
-            case 'Character 1':
-                selectedImage = 'images/narutopixel.jpg';
-                break;
-            case 'Character 2':
-                selectedImage = 'images/gokupixel.jpg';
-                break;
-            case 'Character 3':
-                selectedImage = 'images/kakashipixel.webp';
-                break;
-            default:
-                // Set a default image if no character is selected
-                selectedImage = 'images/icon.png';
-        }
-    
-        // Display the selected character's image in the navbar
-        const selectedCharacterElement = document.getElementById('selected-character');
-        selectedCharacterElement.src = selectedImage;
-        selectedCharacterElement.style.borderRadius = '40%'; // Make it round
-        selectedCharacterElement.style.width = '30px'; // Adjust size as needed
-        selectedCharacterElement.style.height = '30px'; // Adjust size as needed
-    });
+document.addEventListener("DOMContentLoaded", function () {
+    // Retrieve the selected character's image from local storage
+    const selectedCharacter = localStorage.getItem("selectedCharacter");
+    let selectedImage = "";
 
-       // Background video mouse move effect
-       document.addEventListener('mousemove', e => {
-        const video = document.getElementById('background-video');
-        const { clientX, clientY } = e;
-        const { innerWidth, innerHeight } = window;
+    // Set the image path based on the selected character
+    switch (selectedCharacter) {
+        case "Character 1":
+            selectedImage = "images/narutopixel.jpg";
+            break;
+        case "Character 2":
+            selectedImage = "images/gokupixel.jpg";
+            break;
+        case "Character 3":
+            selectedImage = "images/kakashipixel.webp";
+            break;
+        default:
+            // Set a default image if no character is selected
+            selectedImage = "images/icon.png";
+    }
 
-        const moveX = (clientX / innerWidth - 0.5) * 20; // Adjust multiplier for effect intensity
-        const moveY = (clientY / innerHeight - 0.5) * 10; // Adjust multiplier for effect intensity
+    // Display the selected character's image in the navbar
+    const selectedCharacterElement = document.getElementById("selected-character");
+    selectedCharacterElement.src = selectedImage;
+    selectedCharacterElement.style.borderRadius = "40%"; // Make it round
+    selectedCharacterElement.style.width = "30px"; // Adjust size as needed
+    selectedCharacterElement.style.height = "30px"; // Adjust size as needed
+});
 
-        video.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
-    });
-    document.addEventListener('mousemove', e => {
-        const pointer = document.getElementById('pointer');
-        const { clientX, clientY } = e;
-        pointer.style.left = clientX + 'px';
-        pointer.style.top = clientY + 'px';
-    });
 // Initialize PixiJS
 let app = new PIXI.Application({
     width: window.innerWidth,
     height: window.innerHeight,
     transparent: true, // Ensure transparency
 });
-document.getElementById('pixi-container').appendChild(app.view);
+document.getElementById("pixi-container").appendChild(app.view);
 
 // Create a container for particles
 let particleContainer = new PIXI.Container();
 app.stage.addChild(particleContainer);
 
 // Load a particle texture
-const particleTexture = PIXI.Texture.from('testt.gif'); // Use actual path
+const particleTexture = PIXI.Texture.from("images/particle.gif"); // Use actual path
 
 // Function to create a burst effect
 function createBurst(x, y) {
@@ -246,17 +229,17 @@ function createBurst(x, y) {
         particle.y = y;
         particle.alpha = 1;
         particle.anchor.set(0.5);
-        
+
         // Random direction and speed
         let angle = Math.random() * Math.PI * 2;
         let speed = Math.random() * 5 + 2;
         particle.vx = Math.cos(angle) * speed;
         particle.vy = Math.sin(angle) * speed;
-        
+
         particleContainer.addChild(particle);
 
         // Add a tween for particle fade and removal
-        app.ticker.add(function(delta) {
+        app.ticker.add(function (delta) {
             particle.x += particle.vx * delta;
             particle.y += particle.vy * delta;
             particle.alpha -= 0.02 * delta;
@@ -268,12 +251,89 @@ function createBurst(x, y) {
     }
 }
 // Add event listener to character icons
-document.querySelectorAll('.character-icon').forEach(icon => {
-    icon.addEventListener('click', (e) => {
+document.querySelectorAll(".character-icon").forEach((icon) => {
+    icon.addEventListener("click", (e) => {
         let rect = e.target.getBoundingClientRect();
         createBurst(rect.left + rect.width / 2, rect.top + rect.height / 2);
     });
 });
+// Check if the PIXI.Application instance already exists
+if (!window.app || !window.app.stage) {
+    // Create a new PIXI.Application instance
+    const app = new PIXI.Application({ transparent: true });
+    // Append the canvas to the container
+    document.getElementById("pixi-container").appendChild(app.view);
 
+    // Get all character icons
+    const characterIcons = document.querySelectorAll(".character-icon");
+    const graphicsArray = [];
 
+    // Create a BlurFilter for the blur effect
+    const blurFilter = new PIXI.filters.BlurFilter();
 
+    // Loop through each character icon
+    characterIcons.forEach((icon, index) => {
+        // Create a graphics object for each icon
+        const graphics = new PIXI.Graphics();
+        // Position the graphics object to match the icon
+        graphics.position.x = icon.offsetLeft;
+        graphics.position.y = icon.offsetTop;
+        // Make the graphics clickable
+        graphics.interactive = true;
+        graphics.buttonMode = true;
+        // Draw a rectangle with the same size as the icon
+        graphics.beginFill(0x000000, 0); // Transparent fill
+        graphics.drawRect(0, 0, icon.offsetWidth, icon.offsetHeight);
+        graphics.endFill();
+        // Add the graphics object to the PIXI stage
+        app.stage.addChild(graphics);
+
+        // Add event listeners for hover
+        graphics.on("mouseover", () => {
+            // Apply blur to other characters
+            graphicsArray.forEach((otherGraphics, i) => {
+                if (i !== index) {
+                    otherGraphics.filters = [blurFilter];
+                }
+            });
+        });
+
+        graphics.on("mouseout", () => {
+            // Remove blur from other characters
+            graphicsArray.forEach((otherGraphics, i) => {
+                otherGraphics.filters = [];
+            });
+        });
+
+        // Push the graphics object into an array
+        graphicsArray.push(graphics);
+
+        // Add event listener for click
+        graphics.on("click", () => {
+            // Trigger a click event on the corresponding character icon
+            icon.click();
+        });
+    });
+    // Store the PIXI.Application instance in the global scope
+    window.app = app;
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const backgroundAudio = document.getElementById('background-audio');
+    const toggleSoundIcon = document.getElementById('toggle-sound');
+
+    let isPlaying = false;
+
+    toggleSoundIcon.addEventListener('click', function() {
+        if (isPlaying) {
+            backgroundAudio.pause();
+            toggleSoundIcon.classList.remove('fa-volume-up');
+            toggleSoundIcon.classList.add('fa-volume-mute');
+        } else {
+            backgroundAudio.play();
+            toggleSoundIcon.classList.remove('fa-volume-mute');
+            toggleSoundIcon.classList.add('fa-volume-up');
+        }
+        isPlaying = !isPlaying;
+    });
+});
