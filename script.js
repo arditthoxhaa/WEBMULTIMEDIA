@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
             break;
         default:
             // Set a default image if no character is selected
-            selectedImage = "images/icon.png";
+            selectedImage = "images/icon.jpg";
     }
 
     // Display the selected character's image in the navbar
