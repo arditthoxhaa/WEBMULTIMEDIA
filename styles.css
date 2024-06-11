@@ -5,6 +5,10 @@ body {
     padding: 0;
     overflow: hidden; /* Prevent scrolling */
     height: 100vh; /* Ensure the body covers the entire viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #121212; /* Dark background for contrast */
 }
 
 /* Background Video */
@@ -17,7 +21,6 @@ body {
     z-index: 1; /* Ensure video is behind the content */
     overflow: hidden;
     pointer-events: none; /* Disable interaction with the video */
-    background: rgba(0,0,0,0.9);
 }
 
 #background-video {
@@ -29,10 +32,12 @@ body {
     min-width: 100%;
     min-height: 100%;
     transform: translate(-50%, -50%);
-    opacity: 0.3; /* Adjust opacity to make content more readable */
-    filter: blur(12px); /* Slight blur to avoid distraction */
+    opacity: 0.8; /* Adjust opacity to make content more readable */
+    filter: blur(10px); /* Slight blur to avoid distraction */
     transition: opacity 0.5s ease; /* Smooth transition for opacity change */
 }
+
+
 /* PixiJS Container */
 #pixi-container {
     position: fixed;
@@ -46,37 +51,40 @@ body {
 
 /* Login Container Styles */
 .login-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
+    position: relative;
+    background-color: transparent;
+    padding: 30px 40px;
+    border-radius: 15px;
     text-align: center;
-    z-index: 1; /* Ensure form is on top of PixiJS */
+    z-index: 2; /* Ensure form is on top of PixiJS */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.9);
 }
 
 .login-container h2 {
     margin-top: 0;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20px;
 }
 
 .character-icons {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .character-icon {
     width: 80px;
     height: 80px;
-    margin-right: 10px;
+    margin: 0 10px 20px;
     cursor: pointer;
     border-radius: 50%;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
 }
 
 .character-icon:hover {
-    transform: scale(1.1);
+    transform: scale(1.15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.9);
 }
 
 .input-group {
@@ -85,25 +93,39 @@ body {
 
 .input-group label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: white;
+    
 }
 
 .input-group select, .input-group input {
+    margin-left: -10px;
     width: 100%;
-    padding: 5px;
-    border: 1px solid #ccc;
+    padding: 10px;
+    border: 1px solid transparent;
     border-radius: 5px;
+    font-size: 16px;
+}
+
+.input-group input:focus {
+    border-color: transparent;
+    outline: none;
 }
 
 button[type="submit"] {
-    background-color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+    background-color: transparent;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 15px 30px;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button[type="submit"]:hover {
     background-color: #555;
+    transform: scale(1.05);
 }

@@ -8,22 +8,21 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('slider-container').appendChild(app.view);
 
     const images = [
-        { src: 'images/aoharuride.jpg', url: 'anime.html' },
-        { src: 'images/away.jpg', url: 'https://example.com/away' },
-        { src: 'images/demon.jpg', url: 'https://example.com/demon' },
-        { src: 'images/dbz.jpg', url: 'https://example.com/dbz' },
-        { src: 'images/hxh.jpg', url: 'https://example.com/hxh' },
-        { src: 'images/hyouka.jpg', url: 'https://example.com/hyouka' },
-        { src: 'images/jjk.jpg', url: 'https://example.com/jjk' },
-        { src: 'images/naruto.jpg', url: 'https://example.com/naruto' },
-        { src: 'images/one.jpg', url: 'https://example.com/one' },
-        { src: 'images/seven.jpg', url: 'https://example.com/seven' },
-        { src: 'images/theboy.jpg', url: 'https://example.com/theboy' },
-        { src: 'images/titan.jpg', url: 'https://example.com/titan' },
-        { src: 'images/tower.jpg', url: 'https://example.com/tower' },
-        { src: 'images/yourname.jpg', url: 'https://example.com/yourname' }
+        { src: 'images/aoharuride.jpg'},
+        { src: 'images/away.jpg'},
+        { src: 'images/demon.jpg'},
+        { src: 'images/dbz.jpg'},
+        { src: 'images/hxh.jpg'},
+        { src: 'images/hyouka.jpg'},
+        { src: 'images/jjk.jpg' },
+        { src: 'images/naruto.jpg'},
+        { src: 'images/one.jpg'},
+        { src: 'images/seven.jpg'},
+        { src: 'images/theboy.jpg' },
+        { src: 'images/titan.jpg'},
+        { src: 'images/tower.jpg'},
+        { src: 'images/yourname.jpg'}
     ];
-
     const sliderContainer = new PIXI.Container();
     app.stage.addChild(sliderContainer);
 
@@ -33,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     images.forEach(image => {
         textureLoader.add(image.src, image.src);
     });
-
     // Start animation when all images are loaded
     textureLoader.load((loader, resources) => {
         images.forEach((image, index) => {
@@ -61,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ticker.start();
     });
 });
-
+//pause 
 document.querySelectorAll('.anime-preview').forEach(video => {
         video.addEventListener('click', function() {
             if (this.paused) {
@@ -71,6 +69,7 @@ document.querySelectorAll('.anime-preview').forEach(video => {
             }
         });
     });
+    //preloaderi
     document.addEventListener('DOMContentLoaded', function() {
         setTimeout(function() {
             document.getElementById('preloader').style.display = 'none';
@@ -135,63 +134,49 @@ document.querySelectorAll('.anime-preview').forEach(video => {
         displayAnimes(animeData);
     });
     
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-            document.getElementById('preloader').style.display = 'none';
-            document.getElementById('main-content').classList.remove('hidden');
-        }, 1500); // 1500 milliseconds = 1.5 seconds
-    });
     document.addEventListener("DOMContentLoaded", function() {
-        const characterIcons = document.querySelectorAll('.character-icon');
-        const characterSelect = document.getElementById('character');
-        const nameInput = document.getElementById('name');
-        const form = document.getElementById('character-form');
-        
-        // Load the sound effect
-        const clickSound = new Audio('sound.mp3'); // Adjust the path to your sound file
-    
-        characterIcons.forEach(icon => {
-            icon.addEventListener('click', () => {
-                const selectedCharacter = icon.getAttribute('data-character');
-                const selectedImage = icon.getAttribute('data-image'); // Get the image URL
-                characterSelect.value = selectedCharacter;
-                form.classList.add('active'); // Show the form
-    
-                // Hide other character icons
-                characterIcons.forEach(otherIcon => {
-                    if (otherIcon !== icon) {
-                        otherIcon.style.display = 'none';
-                    }
-                });
-    
-                // Play the click sound
-                clickSound.play();
-    
-                // Store the selected character's image URL in local storage
-                localStorage.setItem('selectedImage', selectedImage);
+    const characterIcons = document.querySelectorAll('.character-icon');
+    const characterSelect = document.getElementById('character');
+    const nameInput = document.getElementById('name');
+    const form = document.getElementById('character-form');
+
+    // Load the sound effect
+    const clickSound = new Audio('trailers/sound.mp3'); // Adjust the path to your sound file
+    characterIcons.forEach(icon => {
+        icon.addEventListener('click', () => {
+            const selectedCharacter = icon.getAttribute('data-character');
+            const selectedImage = icon.getAttribute('data-image'); // Get the image URL
+            characterSelect.value = selectedCharacter;
+            form.classList.add('active'); // Show the form
+
+            // Hide other character icons
+            characterIcons.forEach(otherIcon => {
+                if (otherIcon !== icon) {
+                    otherIcon.style.display = 'none';
+                }
             });
-        });
-    
-        form.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent default form submission
-    
-            const characterValue = characterSelect.value;
-            const nameValue = nameInput.value.trim();
-            if (characterValue && nameValue) {
-                // Store the selected character's image URL in local storage
-                localStorage.setItem('selectedCharacter', characterValue);
-    
-                // Proceed with redirection to index.html
-                window.location.href = 'index.html';
-    
-                // Play the click sound
-                clickSound.play();
-            } else {
-                alert('Please choose a character and enter your name.'); // If character or name is missing, show an alert
-            }
+            // Play the click sound
+            clickSound.play();
+            // Store the selected character's image URL in local storage
+            localStorage.setItem('selectedImage', selectedImage);
         });
     });
-    
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const characterValue = characterSelect.value;
+        const nameValue = nameInput.value.trim();
+        if (characterValue && nameValue) {
+            // Store the selected character's image URL in local storage
+            localStorage.setItem('selectedCharacter', characterValue);
+
+            // Proceed with redirection to index.html
+            window.location.href = 'index.html';
+        } else {
+            alert('Please choose a character and enter your name.'); // If character or name is missing, show an alert
+        }
+    });
+});
     document.addEventListener("DOMContentLoaded", function() {
         // Retrieve the selected character's image from local storage
         const selectedCharacter = localStorage.getItem('selectedCharacter');
@@ -210,7 +195,7 @@ document.querySelectorAll('.anime-preview').forEach(video => {
                 break;
             default:
                 // Set a default image if no character is selected
-                selectedImage = 'images/default.jpg';
+                selectedImage = 'images/icon.png';
         }
     
         // Display the selected character's image in the navbar
@@ -232,15 +217,12 @@ document.querySelectorAll('.anime-preview').forEach(video => {
 
         video.style.transform = `translate(-50%, -50%) translate(${moveX}px, ${moveY}px)`;
     });
-
     document.addEventListener('mousemove', e => {
         const pointer = document.getElementById('pointer');
         const { clientX, clientY } = e;
         pointer.style.left = clientX + 'px';
         pointer.style.top = clientY + 'px';
     });
-
-    // Initialize PixiJS
 // Initialize PixiJS
 let app = new PIXI.Application({
     width: window.innerWidth,
@@ -254,7 +236,7 @@ let particleContainer = new PIXI.Container();
 app.stage.addChild(particleContainer);
 
 // Load a particle texture
-const particleTexture = PIXI.Texture.from('photo.png'); // Use actual path
+const particleTexture = PIXI.Texture.from('testt.gif'); // Use actual path
 
 // Function to create a burst effect
 function createBurst(x, y) {
@@ -285,7 +267,6 @@ function createBurst(x, y) {
         });
     }
 }
-
 // Add event listener to character icons
 document.querySelectorAll('.character-icon').forEach(icon => {
     icon.addEventListener('click', (e) => {
@@ -294,117 +275,5 @@ document.querySelectorAll('.character-icon').forEach(icon => {
     });
 });
 
-// Resize the PixiJS application when the window is resized
-window.addEventListener('resize', () => {
-    app.renderer.resize(window.innerWidth, window.innerHeight);
-});
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize Pixi.js Application
-    const app = new PIXI.Application({
-        width: window.innerWidth,
-        height: window.innerHeight,
-        backgroundColor: 0x1099bb,
-    });
-    document.getElementById('pixi-container').appendChild(app.view);
 
-    // Create a container for the squares
-    const squareContainer = new PIXI.Container();
-    app.stage.addChild(squareContainer);
 
-    // Number of squares
-    const numSquares = 10;
-
-    // Create squares
-    for (let i = 0; i < numSquares; i++) {
-        const square = new PIXI.Graphics();
-        square.beginFill(0xffffff);
-        square.drawRect(0, 0, 50, 50);
-        square.endFill();
-        square.x = Math.random() * app.renderer.width;
-        square.y = Math.random() * app.renderer.height;
-        squareContainer.addChild(square);
-    }
-
-    // Animation loop
-    app.ticker.add(() => {
-        // Rotate squares
-        squareContainer.children.forEach(square => {
-            square.rotation += 0.1 * square.scale.x;
-        });
-    });
-});
-document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.getElementById('anime-slider');
-    const images = [
-        'image1.jpg',
-        'image2.jpg',
-        'image3.jpg'
-    ];
-
-    let currentIndex = 0;
-
-    // Create slides
-    images.forEach((image, index) => {
-        const slide = document.createElement('div');
-        slide.className = 'slide';
-        if (index === 0) slide.classList.add('active');
-
-        const img = document.createElement('img');
-        img.src = `/images/${image}`;
-        img.alt = `Slide ${index + 1}`;
-
-        slide.appendChild(img);
-        slider.appendChild(slide);
-    });
-
-    // Create navigation buttons
-    const prevBtn = document.createElement('button');
-    prevBtn.className = 'prev';
-    prevBtn.textContent = '❮';
-    slider.appendChild(prevBtn);
-
-    const nextBtn = document.createElement('button');
-    nextBtn.className = 'next';
-    nextBtn.textContent = '❯';
-    slider.appendChild(nextBtn);
-
-    // Create dots
-    const dotContainer = document.createElement('div');
-    dotContainer.className = 'dot-container';
-    slider.appendChild(dotContainer);
-
-    images.forEach((_, index) => {
-        const dot = document.createElement('span');
-        dot.className = 'dot';
-        if (index === 0) dot.classList.add('active');
-        dotContainer.appendChild(dot);
-
-        dot.addEventListener('click', () => {
-            showSlide(index);
-        });
-    });
-
-    const dots = document.querySelectorAll('.dot');
-
-    // Show slide function
-    function showSlide(index) {
-        const slides = document.querySelectorAll('.slide');
-        slides.forEach(slide => slide.classList.remove('active'));
-        dots.forEach(dot => dot.classList.remove('active'));
-
-        slides[index].classList.add('active');
-        dots[index].classList.add('active');
-        currentIndex = index;
-    }
-
-    // Navigation button events
-    prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-        showSlide(currentIndex);
-    });
-
-    nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % images.length;
-        showSlide(currentIndex);
-    });
-});

@@ -11,15 +11,16 @@ body {
 }
 
 header {
-    background-color: rgba(51, 51, 51, 0.8); /* Slightly transparent */
+    background-color: rgba(27, 27, 27, 0.8);
     color: #fff;
     padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    animation: fadeIn 1s ease; /* Add animation */
+    animation: fadeIn 1s ease;
     position: relative;
-    z-index: 2; /* Ensure header is above the video */
+    z-index: 2;
+    backdrop-filter: blur(10px);
 }
 
 header .logo h1 {
@@ -45,10 +46,10 @@ header nav ul li a {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Ensure video is behind the content */
+    z-index: -1;
     overflow: hidden;
-    pointer-events: none; /* Disable interaction with the video */
-    background: rgba(0,0,0,0.9);
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.1);
 }
 
 #background-video {
@@ -60,15 +61,15 @@ header nav ul li a {
     min-width: 100%;
     min-height: 100%;
     transform: translate(-50%, -50%);
-    opacity: 0.3; /* Adjust opacity to make content more readable */
-    filter: blur(12px); /* Slight blur to avoid distraction */
-    transition: opacity 0.5s ease; /* Smooth transition for opacity change */
+    opacity: 40%;
+    filter: blur(12px);
+    transition: opacity 0.5s ease;
 }
 
 .main-container {
-    flex: 1; /* This makes the main container take up all available space */
+    flex: 1;
     display: flex;
-    justify-content: center; /* Centering main content horizontally */
+    justify-content: center;
     padding: 40px;
 }
 
@@ -106,20 +107,20 @@ header nav ul li a {
 .content {
     flex: 3;
     display: flex;
-    justify-content: center; /* Centering recently-updated within content */
+    justify-content: center;
 }
 
 .recently-updated-container {
     display: flex;
-    justify-content: center; /* Centering recently-updated */
-    width: 100%; /* Ensure it takes full width of the content */
+    justify-content: center;
+    width: 100%;
 }
 
 .recently-updated {
     background: rgba(255, 255, 255, 0.1);
     padding: 20px;
     border-radius: 10px;
-    max-width: 1000px; /* Set a max-width to limit the size */
+    max-width: 1000px;
     width: 100%;
 }
 
@@ -150,6 +151,7 @@ header nav ul li a {
 .anime-info {
     padding: 10px 0;
 }
+
 /* Hover effects for anime cards */
 .anime-card:hover {
     transform: scale(1.05);
@@ -179,58 +181,6 @@ header nav ul li a {
     color: #ffffff;
 }
 
-footer {
-    background-color: rgba(27, 27, 27, 0.8); /* Semi-transparent background */
-    padding: 20px 0;
-    text-align: center;
-    backdrop-filter: blur(10px); /* Optional: Adds a blur effect behind the footer */
-    margin-top: auto;  /* This pushes the footer to the bottom */
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.footer-social {
-    margin-bottom: 20px;
-}
-
-.footer-social a {
-    margin: 0 10px;
-    color: #f5f5f5;
-    text-decoration: none;
-    font-size: 24px;
-    transition: color 0.3s ease;
-}
-
-.footer-social a:hover {
-    color: #ff6347; /* Add a hover effect color, e.g., tomato */
-}
-
-.footer-links {
-    margin-bottom: 20px;
-}
-
-.footer-links a {
-    margin: 0 15px;
-    color: #f5f5f5;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: #ff6347; /* Add a hover effect color, e.g., tomato */
-}
-
-.footer-credits p {
-    margin: 0;
-    font-size: 14px;
-}
-
 /* Preloader styles */
 #preloader {
     position: fixed;
@@ -238,7 +188,7 @@ footer {
     top: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom right, #FF0000, #8B0000, #4B0082, #00008B);
+    background: linear-gradient(to bottom right, #2D293A, #774853, #2D293A, #873340, #D57D7E, #79464B);
     z-index: 1000;
     display: flex;
     justify-content: center;
@@ -276,29 +226,10 @@ footer {
 }
 
 /* Reset CSS */
-/* Reset CSS */
-/* Reset CSS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-}
-
-header {
-    background-color: rgba(51, 51, 51, 0.8); /* Slightly transparent */
-    color: #fff;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: fadeIn 1s ease; /* Add animation */
-    position: relative;
-    z-index: 2; /* Ensure header is above the video */
 }
 
 @keyframes fadeIn {
@@ -339,7 +270,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #ff6347;
+    color: #774853;
 }
 
 /* PIXI.js Effects */
@@ -350,7 +281,7 @@ nav ul li a::after {
     bottom: -5px;
     width: 0;
     height: 2px;
-    background-color: #ff6347;
+    background-color: purple;
     transition: width 0.3s ease, left 0.3s ease;
 }
 
@@ -373,9 +304,9 @@ nav ul li a:hover::after {
 /* Additional styles */
 main {
     padding: 20px;
-    animation: slideInLeft 1s ease; /* Add animation */
+    animation: slideInLeft 1s ease;
     position: relative;
-    z-index: 2; /* Ensure main content is above the video */
+    z-index: 2;
 }
 
 @keyframes slideInLeft {
@@ -390,29 +321,26 @@ main {
 .slider {
     margin-bottom: 50px;
     position: relative;
-    z-index: 2; /* Ensure slider is above the video */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better contrast */
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Add shadow for depth */
-    
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .slider-container {
     display: flex;
     overflow-x: auto;
     gap: 20px;
-    scroll-snap-type: x mandatory; /* Ensures smooth snapping of elements */
-    max-width: 100%; /* Adjust as needed */
-    height: 400px; /* Set the desired height for the slider */
-    margin-bottom: 20px; /* Add some space below the slider */
-    
+    scroll-snap-type: x mandatory;
+    max-width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
 }
 
 .slider-item {
     flex: 0 0 auto;
-    scroll-snap-align: start; /* Snap to the start of each item */
-    
+    scroll-snap-align: start;
 }
 
 .featured-anime {
@@ -421,59 +349,53 @@ main {
     align-items: center;
     justify-content: center;
     margin-bottom: 50px;
-
 }
 
 .featured-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around; /* Spread items horizontally with equal space around them */
-    align-items: center; /* Center items vertically */
+    justify-content: space-around;
+    align-items: center;
 }
 
 .featured-item {
     position: relative;
-    flex: 0 0 calc(33.33% - 20px); /* Set width of each item with proper spacing */
-    margin: 10px; /* Add space between items */
-    transition: transform 0.3s ease, filter 0.3s ease; /* Smooth transition for hover effect and blur */
+    flex: 0 0 calc(33.33% - 20px);
+    margin: 10px;
+    transition: transform 0.3s ease, filter 0.3s ease;
     cursor: pointer;
 }
 
 .featured-item img {
-    width: 100%; /* Make images take the full width of their container */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 10px; /* Optional: add rounded corners for better appearance */
-    
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
 }
 
 .featured-item:hover {
-    transform: scale(1.1); /* Zoom in on hover */
-}
-
-.featured-text.show-text {
-    display: block;
+    transform: scale(1.1);
 }
 
 .featured-text {
-    display: none; /* Initially hide the text */
+    display: none;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); /* Center the text */
+    transform: translate(-50%, -50%);
     color: #fff;
-    background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    background: rgba(0, 0, 0, 0.7);
     padding: 10px;
     border-radius: 5px;
-    z-index: 3; /* Ensure text is above other elements */
-    text-align: center; /* Center text within the container */
+    z-index: 3;
+    text-align: center;
 }
 
 .featured-item.show-text .featured-text {
-    display: block; /* Show the text when the parent has the class "show-text" */
+    display: block;
 }
 
 .featured-item.show-text img {
-    filter: blur(5px); /* Blur the image when text is shown */
+    filter: blur(5px);
 }
 
 .latest-anime {
@@ -484,50 +406,49 @@ main {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-    justify-content: space-between; /* Space items evenly across the container */
+    justify-content: space-between;
 }
 
 .latest-item {
-    flex: 0 0 calc(30% - 7px); /* Each item takes up half the container width minus the gap */
-    display: flex; /* Flex container */
-    flex-direction: column; /* Stack items vertically */
-    align-items: center; /* Center items horizontally */
-    justify-content: center; /* Center items vertically */
-    background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
-    backdrop-filter: blur(10px); /* Blur effect */
+    flex: 0 0 calc(30% - 7px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
     border-radius: 10px;
     overflow: hidden;
-    padding: 20px; /* Add padding */
+    padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .latest-item:hover {
-    transform: translateY(-10px); /* Lift effect on hover */
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .latest-item img {
-    width: 100%; /* Make the image take the full width */
+    width: 100%;
     height: auto;
     border-radius: 10px;
-    margin-bottom: 20px; /* Space between the poster and text */
+    margin-bottom: 20px;
 }
 
-.latest-item .anime-tag, 
-.latest-item .episode-tag, 
-.latest-item .sub-tag, 
-.latest-item h3, 
+.latest-item .anime-tag,
+.latest-item .episode-tag,
+.latest-item .sub-tag,
+.latest-item h3,
 .latest-item p {
     color: #fff;
 }
 
-.latest-item .anime-tag, 
-.latest-item .episode-tag, 
+.latest-item .anime-tag,
+.latest-item .episode-tag,
 .latest-item .sub-tag {
     position: absolute;
-    top: 10px;
     padding: 5px 10px;
     background-color: rgba(255, 165, 0, 0.9);
     color: #fff;
@@ -550,93 +471,56 @@ main {
 .latest-item h3, .latest-item p {
     margin: 0;
     padding: 0 10px;
-    text-align: center; /* Center text within the container */
+    text-align: center;
 }
 
 .anime-preview {
-    width: 300px; /* Adjust width as needed */
+    width: 300px;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-footer {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    animation: fadeIn 1s ease; /* Add animation */
-    position: relative;
-    z-index: 2; /* Ensure footer is above the video */
-}
-
-.video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1; /* Ensure video is behind the content */
-    overflow: hidden;
-    pointer-events: none; /* Disable interaction with the video */
-    background: rgba(0,0,0,0.9);
-}
-
-#background-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: auto;
-    height: auto;
-    min-width: 100%;
-    min-height: 100%;
-    transform: translate(-50%, -50%);
-    opacity: 0.3; /* Adjust opacity to make content more readable */
-    filter: blur(12px); /* Slight blur to avoid distraction */
-    transition: opacity 0.5s ease; /* Smooth transition for opacity change */
-}
-
 .video-background:hover #background-video {
-    opacity: 0.6; /* Lower opacity on hover */
+    opacity: 0.6;
 }
+
 .latest-item img {
-    max-width: 250px; /* Set the maximum width for images */
-    height: auto; /* Maintain the aspect ratio of images */
+    max-width: 250px;
+    height: auto;
 }
-.slider-item img{
-    max-width: 250px; /* Set the maximum width for images */
-    height: auto; /* Maintain the aspect ratio of images */
+
+.slider-item img,
+.featured-item img {
+    max-width: 250px;
+    height: auto;
 }
-.featured-item img{
-    max-width: 250px; /* Set the maximum width for images */
-    height: auto; /* Maintain the aspect ratio of images */
-}
+
 .slider-item img:hover {
-    transform: scale(1.1); /* Zoom in by 10% on hover */
-    transition: transform 0.3s ease; /* Smooth transition */
+    transform: scale(1.1);
 }
 
 .slider-container {
-    border-radius: 10px; /* Rounded corners */
-    overflow: hidden; /* Hide overflowing posters */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .slider-item {
-    margin-right: 20px; /* Space between posters */
+    margin-right: 20px;
 }
 
 .slider-item:last-child {
-    margin-right: 0; /* Remove margin from the last poster */
+    margin-right: 0;
 }
 
 .slider-item img {
-    display: block; /* Ensure images behave as block elements */
-    width: 400px; /* Set width of posters */
-    height: 480px; /* Set height of posters */
-    object-fit: cover; /* Maintain aspect ratio and cover entire container */
-    border-radius: 10px; /* Rounded corners for posters */
-    transition: transform 0.3s ease; /* Smooth transition for hover effect */
+    display: block;
+    width: 400px;
+    height: 480px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
 }
 
 /* Keyframes for sliding animation */
@@ -660,24 +544,13 @@ footer {
 .slider-container {
     animation-iteration-count: 1;
 }
-   
-  /* Media Queries for Responsiveness */
+
+/* Media Queries for Responsiveness */
 
 /* For tablets and below */
 @media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
-
     .featured-item {
         flex: 0 0 calc(50% - 10px); /* Two items per row */
-    }
-
-    .latest-container {
-        flex-wrap: wrap;
-        gap: 20px;
-        justify-content: center; /* Center items horizontally */
     }
 
     .latest-item {
@@ -692,20 +565,6 @@ footer {
 
 /* For mobile phones */
 @media (max-width: 480px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .logo h1 {
-        font-size: 18px;
-    }
-
-    nav ul {
-        flex-direction: column;
-        gap: 5px;
-    }
-
     .featured-item {
         flex: 0 0 100%; /* One item per row */
         margin: 10px 0; /* Add vertical margin */
@@ -771,7 +630,7 @@ footer {
 }
 
 .footer-links a:hover {
-    color: #ff6347; /* Add a hover effect color, e.g., tomato */
+    color: #774853 /* Add a hover effect color, e.g., tomato */
 }
 
 .footer-credits p {
@@ -786,7 +645,7 @@ footer {
 }
 
 .category-button {
-    background-color: tomato;
+    background-color: #2d293c;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -801,8 +660,9 @@ footer {
 }
 
 .category-button:hover {
-    background-color: linear-gradient(to bottom right, #FF0000, #8B0000, #4B0082, #00008B);
+    background-color: #774853;
 }
+
 .latest-anime {
     text-align: center;
 }
@@ -813,11 +673,6 @@ footer {
     justify-content: center;
 }
 
-/* Main content hidden by default */
-.hidden {
-    display: none;
-}
-/* Login Container Styles */
 .login-container {
     position: absolute;
     top: 50%;
@@ -828,15 +683,12 @@ footer {
     border-radius: 10px;
     text-align: center;
 }
-
 .login-container h2 {
     margin-top: 0;
 }
-
 .character-icons {
     margin-bottom: 20px;
 }
-
 .character-icon {
     width: 80px;
     height: 80px;
@@ -845,7 +697,6 @@ footer {
     border-radius: 50%;
     transition: transform 0.3s ease;
 }
-
 .character-icon:hover {
     transform: scale(1.1);
 }
@@ -853,19 +704,17 @@ footer {
 .input-group {
     margin-bottom: 20px;
 }
-
 .input-group label {
     display: block;
     margin-bottom: 5px;
 }
-
-.input-group select, .input-group input {
+.input-group select,
+.input-group input {
     width: 100%;
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
 button[type="submit"] {
     background-color: #333;
     color: #fff;
@@ -874,7 +723,6 @@ button[type="submit"] {
     cursor: pointer;
     border-radius: 5px;
 }
-
 button[type="submit"]:hover {
     background-color: #555;
 }
@@ -882,7 +730,7 @@ button[type="submit"]:hover {
     position: fixed;
     width: 20px; /* Adjust size as needed */
     height: 30px; /* Adjust size as needed */
-    background-image: url('/images/pointer.png'); 
+    background-image: url('/images/pointer.png');
     background-size: contain; /* Adjust the size of the image */
     background-repeat: no-repeat;
     cursor: pointer;
@@ -893,54 +741,77 @@ button[type="submit"]:hover {
 ::-webkit-scrollbar {
     width: 8px;
 }
-
 ::-webkit-scrollbar-thumb {
     background-color: #ff6347;
     border-radius: 4px;
 }
+
 .content-wrapper {
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     width: 90%;
     max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
     background: transparent;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-right: 10px;
+    box-shadow: 0 0 15px transparent;
+    border-radius: 10px;
+    color: white;
 }
 
+/* Image section styling */
 .image-section {
     flex: 1;
-    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
 }
 
 .image-section .main-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Info section styling */
 .info-section {
     flex: 1.5;
-    display: flex;
-    flex-direction: column;
     padding: 20px;
-    background-color: transparent;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin-left: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .page-info h2 {
-    font-size: 28px;
-    margin-bottom: 10px;
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #774853;
 }
 
 .page-info p {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 20px;
 }
 
+.page-info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #774853;
+}
+
+/* Upcoming Animes Container */
 .upcoming-animes {
     width: 25%;
     max-width: 250px;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.9);
     color: white;
     padding: 20px;
     border-radius: 10px;
@@ -948,8 +819,8 @@ button[type="submit"]:hover {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 20%;
-    right: 200px;
+    top: 50%;
+    left: 150px;
     z-index: 5;
     backdrop-filter: blur(5px);
 }
@@ -970,5 +841,27 @@ button[type="submit"]:hover {
 }
 
 .upcoming-animes li strong {
-    color: #ffeb3b;
+    color: #774853;
+}
+
+.contact-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #2D293A;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.contact-button:hover {
+    background-color: #774853;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
